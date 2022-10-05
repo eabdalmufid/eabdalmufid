@@ -51,7 +51,7 @@
 	
 </p>
 
-<hr/>
+
 
 * Credit: [Abdul Mufid](https://github.com/eabdalmufid)
 * Last Edited on: 05/03/2022
