@@ -33,9 +33,7 @@
   &nbsp;
 	  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=eabdalmufid&show_icons=true&locale=en&layout=compact&theme=algolia" alt="eabdalmufid" height="192px"/>
   <br/>
-<p align="center">
-  <a href="https://github.com/eabdalmufid"><img src="https://github-profile-trophy.vercel.app/?username=eabdalmufid&theme=radical&margin-w=20&no-bg=true&no-frame=false" /><a>
-</p>
+<br/>
   <b>Note:</b> Top languages is only a metric of the languages my public code consists of and doesn't reflect experience or skill level.
   </p>
 </details>
