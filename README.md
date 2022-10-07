@@ -8,7 +8,9 @@
 <br>
 <p align="center"> <img src="https://komarev.com/ghpvc/?username=eabdalmufid8&label=Profile%20views&color=0e75b6&style=plastic" alt="eabdalmufid" /> </p>
 
-## 🔥 Streak Stats
+
+
+### 🔥 Streak Stats
 <p align="center"><img src="https://github-readme-streak-stats.herokuapp.com/?user=eabdalmufid&theme=algolia" alt="eabdalmufid"  /></p>
 
 <p align="left"> 
@@ -20,17 +22,11 @@
 
 </p>
 
-------
 
-### Spotify Playing 🎧
-
-<p align="center">
-  <a href="https://open.spotify.com/user/hbv7yzic965h9y82w194av0cz" target="_blank"><img src="https://now-playing-on-spotify.vercel.app/api/spotify" alt="Spotify Now Playing" width="350"/></a>
-</p>
 
 ------
 
-## 📊 Github Stats (Expand to View) 
+### 📊 Github Stats (Expand to View) 
 
 
 <details> 
@@ -53,8 +49,13 @@
 <img src="https://github.com/Platane/snk/raw/output/github-contribution-grid-snake.svg" alt="nz" width="700"/>
 </p>
 
+### 🎧 Spotify Playing
 
-## 🙋‍♀️ Let's Connect
+<p align="center">
+  <a href="https://open.spotify.com/user/hbv7yzic965h9y82w194av0cz" target="_blank"><img src="https://now-playing-on-spotify.vercel.app/api/spotify" alt="Spotify Now Playing" width="350"/></a>
+</p>
+
+### 🙋‍♀️ Let's Connect
 <p align="center">
 	<a href="https://github.com/eabdalmufid"><img src="https://img.icons8.com/bubbles/50/000000/github.png" alt="GitHub"/></a>
 	<a href="https://instagram.com/eabdalmufid_"><img src="https://img.icons8.com/bubbles/50/000000/instagram.png" alt="Instagram"/></a>
