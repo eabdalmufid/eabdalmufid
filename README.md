@@ -1,5 +1,8 @@
 
 <h1 align="center">Hi , I'm Abdul Mufid <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
+
+![An illustration showing a variety of differently themed Octocats. Monuments from different cities are indicated in the background like the Space Needle, Berlin Fernsehturm and Transamerica Pyramid.](https://user-images.githubusercontent.com/3369400/133268513-5bfe2f93-4402-42c9-a403-81c9e86934b6.jpeg)
+
 <p align="center">
   <a href="https://github.com/eabdalmufid/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?lines=Im+Just+Noob;But+I+will+Keep+Learning;I%20|%20Like%20|%20CODING%20:);lets%20study;Together%20HEHEHE%20:)%20:)&center=true&width=500&height=50"></a>
 </p>
