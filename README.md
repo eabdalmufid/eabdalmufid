@@ -18,11 +18,20 @@
 
 <p align="left"> 
 
-
-   
-   <a href="https://chat.whatsapp.com/I2OK9w2mkIpKngLpFs0i93"><img width="83" hight="100" src="https://cdn.icon-icons.com/icons2/2530/PNG/512/whatsapp_button_icon_151832.png">
-   <a href="https://www.python.org" target="_blank">
+  <a href="https://www.python.org" target="_blank">
     <img alt="Python" src="https://img.shields.io/badge/Python%20-%2314354C.svg?logo=python&logoColor=white">
+  </a>
+  <a href="https://www.javascript.com" target="_blank">
+    <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript%20-%2314354C.svg?logo=javascript&logoColor=white">
+  </a>
+  <a href="https://www.typescriptlang.org" target="_blank">
+    <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript%20-%2314354C.svg?logo=TypeScript&logoColor=white">
+  </a>
+  <a href="https://www.cplusplus.com" target="_blank">
+    <img alt="C++" src="https://img.shields.io/badge/C++%20-%2314354C.svg?logo=c%2b%2b&logoColor=white">
+  </a>
+  <a href="https://www.mysql.com" target="_blank">
+    <img alt="MySQL" src="https://img.shields.io/badge/SQL%20-%2314354C.svg?logo=MySQL&logoColor=white">
   </a>
 
 </p>
