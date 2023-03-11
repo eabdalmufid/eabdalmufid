@@ -33,6 +33,15 @@
   <a href="https://www.mysql.com" target="_blank">
     <img alt="MySQL" src="https://img.shields.io/badge/SQL%20-%2314354C.svg?logo=MySQL&logoColor=white">
   </a>
+  <a href="https://github.com/eabdalmufid" target="_blank">
+    <img alt="HTML" src="https://img.shields.io/badge/HTML%20-%2314354C.svg?logo=html5&logoColor=white">
+  </a>
+  <a href="https://www.w3.org" target="_blank">
+    <img alt="CSS" src="https://img.shields.io/badge/CSS%20-%2314354C.svg?logo=css3&logoColor=white">
+  </a>
+  <a href="https://getbootstrap.com" target="_blank">
+    <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap%20-%2314354C.svg?logo=bootstrap&logoColor=white">
+  </a>
 
 </p>
 
