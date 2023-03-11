@@ -42,6 +42,9 @@
   <a href="https://getbootstrap.com" target="_blank">
     <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap%20-%2314354C.svg?logo=bootstrap&logoColor=white">
   </a>
+  <a href="https://git-scm.com" target="_blank">
+    <img alt="Git" src="https://img.shields.io/badge/Git%20-%2314354C.svg?logo=git&logoColor=white">
+  </a>
 
 </p>
 
