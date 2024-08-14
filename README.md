@@ -77,7 +77,9 @@
 
 ### 🎧 Spotify Playing
 
-![Preview](https://tthn.pythonanywhere.com?theme=dark)
+<p align="center">
+<img src="https://tthn.pythonanywhere.com?theme=dark"/>
+</p>
 
 
 ### 🙋‍♀️ Let's Connect
