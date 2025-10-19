@@ -1,70 +1,99 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">Hi , I'm Abdul Mufid <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
 
-## Available Scripts
+![An illustration showing a variety of differently themed Octocats. Monuments from different cities are indicated in the background like the Space Needle, Berlin Fernsehturm and Transamerica Pyramid.](https://user-images.githubusercontent.com/3369400/133268513-5bfe2f93-4402-42c9-a403-81c9e86934b6.jpeg)
 
-In the project directory, you can run:
+<p align="center">
+  <a href="https://github.com/eabdalmufid/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?lines=Im+Just+Noob;But+I+will+Keep+Learning;I%20|%20Like%20|%20CODING%20:);lets%20study;Together%20HEHEHE%20:)%20:)&center=true&width=500&height=50"></a>
+</p>
+<hr/>
+<h4 align="center">I'm an amateur and Noob.</h4>
+<br>
+<p align="center"> <img src="https://komarev.com/ghpvc/?username=eabdalmufid8&label=Profile%20views&color=0e75b6&style=plastic" alt="eabdalmufid" /> </p>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔥 Streak Stats
+<p align="center"><img src="https://github-readme-streak-stats.herokuapp.com/?user=eabdalmufid&theme=algolia" alt="eabdalmufid"  /></p>
 
-### `npm test`
+<p align="left"> 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <a href="https://www.python.org" target="_blank">
+    <img alt="Python" src="https://img.shields.io/badge/Python%20-%2314354C.svg?logo=python&logoColor=white">
+  </a>
+  <a href="https://www.javascript.com" target="_blank">
+    <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript%20-%2314354C.svg?logo=javascript&logoColor=white">
+  </a>
+  <a href="https://www.typescriptlang.org" target="_blank">
+    <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript%20-%2314354C.svg?logo=TypeScript&logoColor=white">
+  </a>
+  <a href="https://www.cplusplus.com" target="_blank">
+    <img alt="C++" src="https://img.shields.io/badge/C++%20-%2314354C.svg?logo=c%2b%2b&logoColor=white">
+  </a>
+  <a href="https://www.mysql.com" target="_blank">
+    <img alt="MySQL" src="https://img.shields.io/badge/SQL%20-%2314354C.svg?logo=MySQL&logoColor=white">
+  </a>
+  <a href="https://github.com/eabdalmufid" target="_blank">
+    <img alt="HTML" src="https://img.shields.io/badge/HTML%20-%2314354C.svg?logo=html5&logoColor=white">
+  </a>
+  <a href="https://www.w3.org" target="_blank">
+    <img alt="CSS" src="https://img.shields.io/badge/CSS%20-%2314354C.svg?logo=css3&logoColor=white">
+  </a>
+  <a href="https://getbootstrap.com" target="_blank">
+    <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap%20-%2314354C.svg?logo=bootstrap&logoColor=white">
+  </a>
+  <a href="https://git-scm.com" target="_blank">
+    <img alt="Git" src="https://img.shields.io/badge/Git%20-%2314354C.svg?logo=git&logoColor=white">
+  </a>
 
-### `npm run build`
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+------
 
-### `npm run eject`
+### 📊 Github Stats (Expand to View) 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<details> 
+  <summary><b>💻 GitHub Profile Stats</b></summary>
+  <br/>
+  <p align="center">
+    <a href="https://github.com/eabdalmufid/github-readme-stats"><img alt="eabdalmufid's Github Stats" src="https://github-readme-stats.vercel.app/api?username=eabdalmufid&show_icons=true&count_private=true&theme=algolia" height="192px"/></a>
+    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=eabdalmufid&show_icons=true&locale=en&layout=compact&theme=algolia" alt="eabdalmufid" height="192px"/>
+    <br/>
+    <b>Note:</b> Top languages is only a metric of the languages my public code consists of and doesn't reflect experience or skill level.
+  </p>
+</details>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+</details>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<p align="center">
+<img src="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake-dark.svg" alt="nz" width="700"/>
+</p>
 
-## Learn More
+### 🎧 Spotify Playing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="center">
+<img src="https://novatorem.vercel.app/api/spotify?background_color=0d1117&border_color=ffffff"/>
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### 🙋‍♀️ Let's Connect
+<p align="center">
+	<a href="https://github.com/eabdalmufid"><img src="https://img.icons8.com/bubbles/50/000000/github.png" alt="GitHub"/></a>
+	<a href="https://instagram.com/eabdlmufid"><img src="https://img.icons8.com/bubbles/50/000000/instagram.png" alt="Instagram"/></a>
+	
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Credit: [Abdul Mufid](https://github.com/eabdalmufid)
+* Last Edited on: 05/03/2022
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
