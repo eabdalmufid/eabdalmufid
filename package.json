@@ -4,7 +4,7 @@
   "homepage": "https://affidev.com",
   "private": true,
   "scripts": {
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d public -r https://x-access-token:${GITHUB_TOKEN}@github.com/eabdalmufid/eabdalmufid.git"
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
