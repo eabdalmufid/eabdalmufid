@@ -3,8 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Jalankan otomatis setiap kali ada push ke branch main
-  workflow_dispatch: # Bisa dijalankan manual dari tab "Actions"
+      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -17,10 +17,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # bisa sesuaikan versi Node
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
+
+      - name: Configure Git identity
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
       - name: Deploy to GitHub Pages
         env:
