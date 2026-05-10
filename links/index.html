@@ -31,6 +31,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin>
+  
+  <!-- Preload Critical LCP Image -->
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/110360966?v=4">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
@@ -234,7 +240,7 @@
   <main class="wrap">
     <article class="card">
       <div class="hero"></div>
-      <div class="avatar"><img src="https://avatars.githubusercontent.com/u/110360966?v=4" alt="Abdul Mufid"></div>
+      <div class="avatar"><img src="https://avatars.githubusercontent.com/u/110360966?v=4" alt="Abdul Mufid" fetchpriority="high" decoding="async"></div>
       <header class="head">
         <h1 class="name">Abdul Mufid <i class="bi bi-patch-check-fill"></i></h1>
         <div class="role">Fullstack Developer</div>
