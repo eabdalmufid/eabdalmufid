@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Affidev Hosting - Project Online 24 Jam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<script>
+  window.location.replace("http://affidev.is-a.dev/affihost");
+</script>
+</body>
+</html>
