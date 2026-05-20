@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>File Upload</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#502400",
+                        "primary-fixed": "#d8e2ff",
+                        "outline": "#8c909f",
+                        "on-tertiary-container": "#461f00",
+                        "tertiary": "#ffb786",
+                        "on-primary-container": "#00285d",
+                        "inverse-primary": "#005ac2",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-primary-fixed": "#001a42",
+                        "on-surface": "#e5e1e4",
+                        "tertiary-container": "#df7412",
+                        "inverse-surface": "#e5e1e4",
+                        "surface-variant": "#353437",
+                        "on-background": "#e5e1e4",
+                        "surface-container": "#201f22",
+                        "surface-container-high": "#2a2a2c",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-fixed-dim": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-tertiary-fixed": "#311400",
+                        "background": "#131315",
+                        "on-primary": "#002e6a",
+                        "surface-container-highest": "#353437",
+                        "on-secondary-container": "#a9bad3",
+                        "secondary-container": "#3a4a5f",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface": "#131315",
+                        "outline-variant": "#424754",
+                        "surface-dim": "#131315",
+                        "surface-bright": "#39393b",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-secondary": "#213145",
+                        "surface-tint": "#adc6ff",
+                        "secondary": "#b7c8e1",
+                        "primary": "#adc6ff",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary-container": "#4d8eff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#313032",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container-low": "#1c1b1d",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "2rem",
+                        "lg": "1.5rem",
+                        "base-unit": "8px",
+                        "margin-mobile": "1rem",
+                        "2xl": "3rem",
+                        "md": "1rem",
+                        "xl": "2rem",
+                        "xs": "0.25rem",
+                        "gutter": "1.5rem",
+                        "sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+        }
+        .drag-over {
+            border-style: solid !important;
+            border-color: #adc6ff !important;
+            background-color: #1c1b1d !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            min-height: 100dvh;
+        }
+        .history-list-item:not(:last-child) {
+            border-bottom: 1px solid rgba(66, 71, 84, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-lg text-on-background min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile py-xl">
+<div class="w-full max-w-[720px]">
+<!-- Decorative Element -->
+<div class="mb-xl text-center">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-container text-on-primary-container mb-6">
+<span class="material-symbols-outlined" style="font-size: 40px;">cloud_upload</span>
+</div>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-2">Upload File ke tmpfiles.org</h1>
+<p class="text-body-sm text-on-surface-variant">Simple, reliable, and secure file sharing utility.</p>
+</div>
+<!-- Upload Card -->
+<div class="bg-surface-container-low custom-shadow rounded-xl p-lg border border-outline-variant/20 overflow-hidden">
+<!-- Drop Zone -->
+<div class="relative border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-xl p-xl flex flex-col items-center justify-center transition-all duration-200 cursor-pointer group hover:border-primary hover:bg-surface-container" id="dropZone">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="fileInput" type="file"/>
+<div class="text-center pointer-events-none">
+<span class="material-symbols-outlined text-primary text-[56px] mb-4 group-hover:scale-110 transition-transform">upload_file</span>
+<p class="text-label-md font-label-md text-on-surface mb-1">Click to browse or drag and drop</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Maximum file size: 5GB</p>
+<div class="mt-4 hidden px-4 py-2 bg-primary-container text-on-primary-container rounded-full text-label-md flex items-center justify-center gap-2" id="selectedFileName">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="truncate max-w-[200px]">File Selected</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full mt-lg bg-primary text-on-primary h-[56px] rounded-lg font-bold text-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/10" id="uploadBtn">
+<span class="material-symbols-outlined">publish</span>
+                    Upload Now
+                </button>
+<!-- Status & Progress -->
+<div class="mt-lg space-y-4 hidden" id="statusContainer">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center mb-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant" id="status">Preparing upload...</span>
+<span class="text-label-sm font-label-sm text-primary" id="progressPercent">0%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300 w-0" id="progressBar"></div>
+</div>
+</div>
+<div class="hidden" id="resultContainer">
+<div class="p-4 bg-surface-container-high rounded-lg border border-outline-variant/30">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Direct Link Download:</p>
+<div class="flex gap-2">
+<input class="flex-grow bg-surface-container-lowest border border-outline-variant/50 rounded-md text-body-sm p-2 text-on-surface font-mono overflow-hidden focus:ring-1 focus:ring-primary outline-none" id="result" readonly="" type="text"/>
+<button class="px-4 bg-primary text-on-primary rounded-md hover:bg-primary/90 transition-opacity active:scale-90" id="copyBtn">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Upload History Section -->
+<div class="mt-xl hidden" id="historySection">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-label-md font-bold text-on-surface uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">history</span>
+                        Riwayat Upload
+                    </h2>
+<button class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" id="clearHistory">Hapus Riwayat</button>
+</div>
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden" id="historyList">
+<!-- History items will be injected here -->
+</div>
+</div>
+<!-- Features Info -->
+<div class="mt-xl grid grid-cols-2 gap-gutter">
+<div class="flex items-start gap-3 p-2">
+<span class="material-symbols-outlined text-primary">timer</span>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Auto-Expiring</h3>
+<p class="text-body-sm text-on-surface-variant text-[12px]">Files removed after 60 mins</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-2">
+<span class="material-symbols-outlined text-primary">lock</span>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Encrypted</h3>
+<p class="text-body-sm text-on-surface-variant text-[12px]">Secure server-side processing</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        const fileInput = document.getElementById('fileInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const status = document.getElementById('status');
+        const result = document.getElementById('result');
+        const dropZone = document.getElementById('dropZone');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const statusContainer = document.getElementById('statusContainer');
+        const resultContainer = document.getElementById('resultContainer');
+        const progressBar = document.getElementById('progressBar');
+        const progressPercent = document.getElementById('progressPercent');
+        const copyBtn = document.getElementById('copyBtn');
+        const historySection = document.getElementById('historySection');
+        const historyList = document.getElementById('historyList');
+        const clearHistoryBtn = document.getElementById('clearHistory');
+
+        // History Management
+        let uploadHistory = JSON.parse(localStorage.getItem('upload_history') || '[]');
+
+        function updateHistoryUI() {
+            if (uploadHistory.length > 0) {
+                historySection.classList.remove('hidden');
+                historyList.innerHTML = uploadHistory.map((item, index) => `
+                    <div class="history-list-item flex items-center justify-between p-4 bg-surface-container-low hover:bg-surface-container-high transition-colors">
+                        <div class="flex flex-col min-w-0 pr-4">
+                            <span class="text-body-sm font-medium text-on-surface truncate">${item.name}</span>
+                            <span class="text-label-sm text-on-surface-variant">${new Date(item.timestamp).toLocaleTimeString()}</span>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <a href="${item.url}" target="_blank" class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Download">
+                                <span class="material-symbols-outlined text-[20px]">download</span>
+                            </a>
+                            <button onclick="copyToClipboard('${item.url}', this)" class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Copy Link">
+                                <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                historySection.classList.add('hidden');
+            }
+        }
+
+        window.copyToClipboard = (text, btn) => {
+            const input = document.createElement('input');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            
+            const originalIcon = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined text-[20px] text-green-400">check</span>';
+            setTimeout(() => btn.innerHTML = originalIcon, 2000);
+        };
+
+        clearHistoryBtn.addEventListener('click', () => {
+            if (confirm('Hapus semua riwayat upload?')) {
+                uploadHistory = [];
+                localStorage.removeItem('upload_history');
+                updateHistoryUI();
+            }
+        });
+
+        // Initialize UI
+        updateHistoryUI();
+
+        // Drag & Drop visual feedback
+        fileInput.addEventListener('dragenter', () => dropZone.classList.add('drag-over'));
+        fileInput.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+        fileInput.addEventListener('drop', () => dropZone.classList.remove('drag-over'));
+
+        // Handle file selection display
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                selectedFileName.querySelector('span:nth-child(2)').textContent = fileName;
+                selectedFileName.classList.remove('hidden');
+            }
+        });
+
+        // Copy functionality for main result
+        copyBtn.addEventListener('click', () => {
+            result.select();
+            document.execCommand('copy');
+            const originalIcon = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+            setTimeout(() => copyBtn.innerHTML = originalIcon, 2000);
+        });
+
+        // Core Upload Logic
+        uploadBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Silakan pilih file terlebih dahulu.');
+                return;
+            }
+
+            statusContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            status.textContent = 'Uploading...';
+            status.classList.remove('text-green-400', 'text-error');
+            progressBar.style.width = '0%';
+            progressPercent.textContent = '0%';
+            uploadBtn.disabled = true;
+            uploadBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    if (progress < 85) {
+                        progress += Math.random() * 10;
+                        progressBar.style.width = `${progress}%`;
+                        progressPercent.textContent = `${Math.round(progress)}%`;
+                    }
+                }, 300);
+
+                const response = await fetch('https://tmpfiles.org/api/v1/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                clearInterval(progressInterval);
+                const data = await response.json();
+
+                if (response.ok) {
+                    progressBar.style.width = '100%';
+                    progressPercent.textContent = '100%';
+                    status.textContent = 'Upload Berhasil!';
+                    status.classList.add('text-green-400');
+                    
+                    const downloadUrl = data.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+                    result.value = downloadUrl;
+                    resultContainer.classList.remove('hidden');
+
+                    // Add to History
+                    const historyItem = {
+                        name: file.name,
+                        url: downloadUrl,
+                        timestamp: new Date().getTime()
+                    };
+                    uploadHistory.unshift(historyItem);
+                    if (uploadHistory.length > 10) uploadHistory.pop(); // Keep last 10
+                    localStorage.setItem('upload_history', JSON.stringify(uploadHistory));
+                    updateHistoryUI();
+                    
+                    // Reset selection UI but keep status
+                    fileInput.value = '';
+                    selectedFileName.classList.add('hidden');
+                } else {
+                    status.textContent = 'Upload Gagal: ' + (data.message || 'Error unknown');
+                    status.classList.add('text-error');
+                }
+            } catch (error) {
+                status.textContent = 'Terjadi kesalahan saat mengunggah.';
+                status.classList.add('text-error');
+                console.error(error);
+            } finally {
+                uploadBtn.disabled = false;
+                uploadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body></html>
