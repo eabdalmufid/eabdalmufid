@@ -2,12 +2,1143 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Affidev Hosting - Project Online 24 Jam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Affihost - Managed Website & n8n Hosting Profesional</title>
+  <meta name="description" content="Layanan managed hosting website Node.js dan n8n. Cepat, aman, dan fully setup server dari nol. Mulai dari Rp1.500/hari." />
+  
+  <!-- Premium Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-muted: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --success-bg: #f0fdf4;
+      --radius: 12px;
+      --max-width: 1000px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: min(var(--max-width), 100%);
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .brand-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary);
+      border-radius: 50%;
+    }
+
+    .menu {
+      display: flex;
+      gap: 28px;
+    }
+
+    .menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.15s ease;
+    }
+
+    .menu a:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: var(--primary);
+      border: 1px solid #dbeafe;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text);
+      letter-spacing: -0.7px;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+
+    .btn-ghost {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      background-color: var(--bg-muted);
+      border-color: #cbd5e1;
+    }
+
+    .hero-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--success);
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-bg {
+      background-color: var(--bg-muted);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Pricing/Services Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .card p.card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .price-box {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .period {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    ul.features-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 32px;
+      margin-top: auto;
+    }
+
+    ul.features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    ul.features-list li svg {
+      width: 18px;
+      height: 18px;
+      color: var(--success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Minimalist Selector Pricing Table */
+    .simple-pricing {
+      margin-top: 50px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 28px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .simple-pricing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .simple-pricing-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .calc-inputs {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .calc-select {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: var(--bg-muted);
+      color: var(--text-muted);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .calc-select:focus {
+      border-color: var(--primary);
+    }
+
+    .calc-qty-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .calc-qty-box input {
+      width: 55px;
+      padding: 7px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: center;
+      outline: none;
+      background: var(--bg-muted);
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+
+    .calc-qty-box input:focus {
+      border-color: var(--primary);
+    }
+
+    .simple-pricing-select {
+      display: flex;
+      gap: 8px;
+    }
+
+    .select-pill {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .select-pill.active {
+      background: #eff6ff;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .simple-pricing-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 20px;
+    }
+
+    .simple-pricing-info {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .simple-pricing-total {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .total-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    /* Specifications Grid */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .spec-card {
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .spec-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .spec-card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .spec-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    /* Steps (Cara Kerja) */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step-card {
+      position: relative;
+    }
+
+    .step-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* FAQ Details */
+    .faq {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #ffffff;
+      transition: border-color 0.15s ease;
+    }
+
+    details[open] {
+      border-color: #cbd5e1;
+    }
+
+    summary {
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-right: 2px solid var(--text-muted);
+      border-bottom: 2px solid var(--text-muted);
+      transform: rotate(45deg);
+      transition: transform 0.15s ease;
+      margin-right: 2px;
+      flex-shrink: 0;
+    }
+
+    details[open] summary::after {
+      transform: rotate(-135deg);
+    }
+
+    details p {
+      padding: 0 20px 16px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* Contact box */
+    .contact-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-card h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.98rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    footer p {
+      margin-bottom: 6px;
+    }
+
+    /* Responsive */
+    @media (max-width: 868px) {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .specs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .menu {
+        display: none;
+      }
+      .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        border-radius: 6px;
+      }
+      .hero {
+        padding: 50px 0 30px;
+      }
+      .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 32px 0;
+      }
+      h1 {
+        font-size: 1.7rem;
+        line-height: 1.25;
+      }
+      .hero .btn-ghost {
+        display: none;
+      }
+      .card {
+        background: #f8fafc;
+        border: none;
+        padding: 20px;
+        border-radius: var(--radius);
+      }
+      .card h3 {
+        font-size: 1.1rem;
+      }
+      .card .features-list svg {
+        display: none;
+      }
+      .card .features-list li {
+        padding-left: 0;
+        margin-bottom: 6px;
+        font-size: 0.88rem;
+        display: list-item;
+        list-style-type: disc;
+        margin-left: 18px;
+        color: var(--text-muted);
+      }
+      .spec-card {
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+      .spec-card svg {
+        display: none;
+      }
+      .spec-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+      }
+      .spec-card p {
+        font-size: 0.88rem;
+      }
+      .step-card {
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+      .step-number {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+        position: static;
+        color: var(--primary);
+      }
+      .step-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+      }
+      .step-card p {
+        font-size: 0.88rem;
+      }
+      .simple-pricing {
+        border: none;
+        background: #f8fafc;
+        padding: 16px;
+      }
+      .simple-pricing-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+      .calc-inputs {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+      }
+      .calc-select {
+        width: 100%;
+      }
+      .calc-qty-box {
+        justify-content: space-between;
+        width: 100%;
+      }
+      .calc-qty-box input {
+        width: 80px;
+      }
+      .simple-pricing-select {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        width: 100%;
+      }
+      .select-pill {
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+      }
+      .simple-pricing-body {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+      .simple-pricing-total {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      .total-val {
+        text-align: center;
+      }
+      .contact-card {
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+      .contact-card h2 {
+        font-size: 1.35rem;
+        margin-bottom: 6px;
+      }
+      .contact-card p {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+      }
+      summary {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+      }
+      details p {
+        padding: 0 14px 12px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .brand {
+        font-size: 1.1rem;
+      }
+      .nav-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<script>
-  window.location.replace("http://affidev.is-a.dev/affihost");
-</script>
+
+  <!-- Minimal Header -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <span class="brand-dot"></span>Affihost<span></span>
+      </a>
+      <nav class="menu">
+        <a href="#layanan">Layanan</a>
+        <a href="#kalkulator">Biaya</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#proses">Alur Kerja</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="https://wa.me/628982003898" class="nav-btn">Chat WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="badge">Managed Hosting Website & n8n</div>
+        <h1>Managed Hosting <span>Profesional</span><br />Mudah, Cepat, dan Siap 24 Jam</h1>
+        <p>
+          Serahkan urusan setup server VPS, deployment, reverse proxy Nginx, dan konfigurasi SSL gratis kepada kami. 
+          Website dan project automation Anda online 24 jam dengan performa stabil.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://wa.me/628982003898">
+            Mulai Setup Project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a class="btn btn-ghost" href="#layanan">Lihat Paket & Biaya</a>
+        </div>
+        <div>
+          <span class="hero-note">✓ Setup Ditangani Penuh oleh Tim Kami</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-bg" id="layanan">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Pilihan Paket Hosting</h2>
+          <p class="section-sub">Layanan managed hosting siap pakai. Tanpa biaya setup awal, harga transparan, flat, dan hemat.</p>
+        </div>
+        
+        <div class="grid">
+          <!-- Web Hosting Card -->
+          <article class="card">
+            <h3>Hosting Website (Apapun Jenisnya)</h3>
+            <p class="card-desc">Deploy website statis, PHP, Node.js, Next.js, atau web app lainnya. Cukup kirim file project Anda.</p>
+            <div class="price-box">
+              <span class="price">Rp45.000</span>
+              <span class="period">/ bulan (Rp1.500 / hari) per website</span>
+            </div>
+            <ul class="features-list">
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Hosting untuk web statis (HTML/CSS), PHP, Node.js, Next.js, dll.
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Setup runtime environment & reverse proxy Nginx lengkap
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Integrasi Auto-SSL / HTTPS aman dan gratis selamanya
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Auto-restart via process manager jika terjadi crash
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Pemeliharaan server & monitoring performa 24 jam penuh
+              </li>
+            </ul>
+            <a class="btn btn-ghost" style="margin-top: auto;" href="https://wa.me/628982003898?text=Halo%20Affihost,%20saya%20tertarik%20dengan%20Paket%20Hosting%20Website">Pesan Paket</a>
+          </article>
+
+          <!-- n8n Hosting Card -->
+          <article class="card">
+            <h3>Hosting Workflow n8n Automation</h3>
+            <p class="card-desc">Jalankan workflow otomasi bisnis Anda 24 jam. Cukup ekspor workflow Anda ke JSON, kami import & jalankan.</p>
+            <div class="price-box">
+              <span class="price">Rp45.000</span>
+              <span class="period">/ bulan (Rp1.500 / hari) per workflow</span>
+            </div>
+            <ul class="features-list">
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Ekspor workflow dari n8n lokal/gratis Anda ke file JSON
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Kirim file JSON tersebut untuk kami import ke server n8n kami
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Workflow otomasi berjalan stabil dan nonstop 24 jam penuh
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Dukungan integrasi webhook, API, dan bot chat
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Lebih hemat, tanpa perlu bayar sewa/perawatan server VPS sendiri
+              </li>
+            </ul>
+            <a class="btn btn-ghost" style="margin-top: auto;" href="https://wa.me/628982003898?text=Halo%20Affihost,%20saya%20tertarik%20dengan%20Paket%20Hosting%20n8n">Pesan Paket</a>
+          </article>
+        </div>
+
+        <!-- Clean Pricing Calculator (Tidak Rame) -->
+        <div class="simple-pricing" id="kalkulator">
+          <div class="simple-pricing-header">
+            <div>
+              <span class="simple-pricing-title">Simulasi Estimasi Biaya</span>
+              <div class="calc-inputs">
+                <select id="calc-service" class="calc-select" onchange="setService(this.value)">
+                  <option value="website">Hosting Website (Rp45rb/bln)</option>
+                  <option value="n8n">Hosting Workflow n8n (Rp45rb/bln)</option>
+                </select>
+                <div class="calc-qty-box">
+                  <span>Jumlah:</span>
+                  <input type="number" id="calc-qty" value="1" min="1" max="50" oninput="setQty(this.value)" />
+                </div>
+              </div>
+            </div>
+            <div class="simple-pricing-select">
+              <button class="select-pill active" id="dur-30" onclick="setDur(30)">30 Hari</button>
+              <button class="select-pill" id="dur-90" onclick="setDur(90)">90 Hari (Disc 5%)</button>
+              <button class="select-pill" id="dur-365" onclick="setDur(365)">365 Hari (Disc 20%)</button>
+            </div>
+          </div>
+          <div class="simple-pricing-body">
+            <div class="simple-pricing-info">
+              <p>Minimal pemesanan awal adalah 30 hari.</p>
+              <p style="font-size: 0.8rem; margin-top: 4px; color: #64748b;" id="calc-rate-note">*Harga Rp1.500 per hari / website.</p>
+            </div>
+            <div class="simple-pricing-total">
+              <span class="total-val" id="total-val">Rp45.000</span>
+              <a class="btn btn-primary" id="wa-link" href="#" target="_blank">Pesan via WA</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section id="keunggulan">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Mengapa Memilih Kami?</h2>
+          <p class="section-sub">Kami menangani seluruh kerumitan setup server agar Anda dapat fokus mengembangkan produk.</p>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-card">
+            <!-- Gear Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <h3>Setup Server Lengkap</h3>
+            <p>Sudah termasuk setup Nginx reverse proxy, port mapping, environment vars, runtime installation, dan firewall dasar.</p>
+          </div>
+          <div class="spec-card">
+            <!-- Shield/Lock Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <h3>SSL HTTPS Gratis</h3>
+            <p>Setiap project akan dihubungkan dengan sub/domain Anda lengkap dengan instalasi sertifikat SSL gratis yang diperbarui otomatis.</p>
+          </div>
+          <div class="spec-card">
+            <!-- Heartbeat/Monitoring Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            <h3>Monitoring & Auto Restart</h3>
+            <p>Kami memantau status server secara berkala. Sistem PM2/Docker kami otomatis me-restart service jika terdeteksi crash.</p>
+          </div>
+        </div>
+      </div>
+    </section>    <!-- Process Section -->
+    <section class="section-bg" id="proses">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Alur Kerja Praktis</h2>
+          <p class="section-sub">Tiga langkah mudah untuk mendeploy website atau otomasi n8n Anda secara instan.</p>
+        </div>
+        <div class="steps">
+          <article class="step-card">
+            <div class="step-number">01</div>
+            <h3>Kirim File / Ekspor JSON</h3>
+            <p>Kirimkan zip folder website Anda, atau cukup ekspor workflow otomasi n8n lokal Anda menjadi file JSON lalu kirim via WhatsApp.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">02</div>
+            <h3>Proses Setup & Import</h3>
+            <p>Kami mendeploy file website Anda ke server kami, atau meng-import file JSON workflow n8n Anda ke instance n8n server kami.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">03</div>
+            <h3>Project Live Online</h3>
+            <p>Terima tautan website Anda atau tautan workflow otomasi Anda yang sudah aktif berjalan online 24 jam nonstop.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Pertanyaan Umum</h2>
+          <p class="section-sub">Informasi lebih detail mengenai pengelolaan server dan pembayaran.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Saya sudah punya folder website, bagaimana cara host-nya?</summary>
+            <p>Cukup kirim folder website Anda (format ZIP atau Git repo). Kami menerima semua jenis website (HTML statis, PHP, Node.js, Next.js, React, dll) untuk di-online-kan di server kami.</p>
+          </details>
+          <details>
+            <summary>Bagaimana cara kerja hosting n8n di sini?</summary>
+            <p>Anda hanya perlu mendesain workflow otomasi di n8n lokal/komputer Anda sendiri, lalu ekspor workflow tersebut menjadi file JSON. Kirim file JSON itu ke kami, lalu kami akan meng-import dan menjalankannya di instance n8n server kami yang online 24 jam.</p>
+          </details>
+          <details>
+            <summary>Apakah saya perlu paham Linux atau SSH server?</summary>
+            <p>Tidak perlu. Semua urusan deployment awal, setup Nginx, security updates, dan maintenance kami tangani penuh. Anda tinggal memprogram project atau memakai dashboard n8n.</p>
+          </details>
+          <details>
+            <summary>Bagaimana sistem pembayaran sewa hosting ini?</summary>
+            <p>Biaya sewa flat Rp1.500 per hari dengan pemesanan minimal awal 30 hari (Rp45.000). Pembayaran dilakukan di awal siklus sewa lewat transfer bank atau e-wallet (Dana/Gopay/QRIS).</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-bg" id="hubungi">
+      <div class="container">
+        <div class="contact-card">
+          <h2>Siap Online Bersama Affihost?</h2>
+          <p>
+            Diskusikan kebutuhan deployment project website atau n8n Anda secara langsung. Tim kami siap melakukan setup server secepatnya.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://wa.me/628982003898">
+              Hubungi via WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="mailto:mail@affidev.com">
+              Kirim Email Pertanyaan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <strong>Affihost</strong>. Managed Hosting & Server Setup. All Rights Reserved.</p>
+      <p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Solusi deploy instan, full setup server, auto SSL, online 24 jam.</p>
+    </div>
+  </footer>
+
+  <script>
+    let currentDur = 30;
+    let selectedService = 'website';
+    let currentQty = 1;
+    const pricePerDay = 1500;
+
+    function setService(service) {
+      selectedService = service;
+      const rateLabel = document.getElementById('calc-rate-note');
+      if (service === 'website') {
+        rateLabel.textContent = '*Harga Rp1.500 per hari / website.';
+      } else {
+        rateLabel.textContent = '*Harga Rp1.500 per hari / workflow.';
+      }
+      calculate();
+    }
+
+    function setQty(qty) {
+      qty = parseInt(qty);
+      if (isNaN(qty) || qty < 1) qty = 1;
+      currentQty = qty;
+      calculate();
+    }
+
+    function setDur(days) {
+      currentDur = days;
+      
+      // Update UI active class
+      document.getElementById('dur-30').classList.toggle('active', days === 30);
+      document.getElementById('dur-90').classList.toggle('active', days === 90);
+      document.getElementById('dur-365').classList.toggle('active', days === 365);
+      
+      calculate();
+    }
+
+    function calculate() {
+      const baseCost = pricePerDay * currentDur * currentQty;
+      
+      let discount = 0;
+      if (currentDur === 90) discount = 0.05;
+      else if (currentDur === 365) discount = 0.20;
+      
+      const finalCost = baseCost - Math.round(baseCost * discount);
+      
+      // Render
+      document.getElementById('total-val').textContent = 'Rp ' + finalCost.toLocaleString('id-ID');
+      
+      // WhatsApp link
+      const waBase = "https://wa.me/628982003898";
+      const serviceName = selectedService === 'website' ? 'Hosting Website' : 'Hosting Workflow n8n';
+      const qtyUnit = selectedService === 'website' ? 'website' : 'workflow';
+      
+      const message = `Halo Affihost, saya tertarik menyewa hosting:\n` +
+                      `- Tipe Layanan: ${serviceName}\n` +
+                      `- Jumlah: ${currentQty} ${qtyUnit}\n` +
+                      `- Durasi Sewa: ${currentDur} Hari\n` +
+                      `- Estimasi Biaya: Rp ${finalCost.toLocaleString('id-ID')}\n\n` +
+                      `Mohon info lebih lanjut untuk pemesanan.`;
+      
+      document.getElementById('wa-link').href = waBase + "?text=" + encodeURIComponent(message);
+    }
+
+    // Init
+    window.onload = function() {
+      calculate();
+    };
+  </script>
 </body>
 </html>
