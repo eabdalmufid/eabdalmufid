@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>File Upload</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind Theme Configuration -->
-<script id="tailwind-config">
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>File Upload</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <!-- Tailwind Theme Configuration -->
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -92,129 +94,164 @@
                         "label-sm": ["Inter"]
                     },
                     "fontSize": {
-                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
-                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "500"}],
-                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
-                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
-                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}]
+                        "body-sm": ["14px", {
+                            "lineHeight": "1.5",
+                            "fontWeight": "400"
+                        }],
+                        "body-md": ["16px", {
+                            "lineHeight": "1.5",
+                            "fontWeight": "400"
+                        }],
+                        "body-lg": ["18px", {
+                            "lineHeight": "1.6",
+                            "fontWeight": "400"
+                        }],
+                        "headline-xl": ["48px", {
+                            "lineHeight": "1.1",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "700"
+                        }],
+                        "headline-md": ["24px", {
+                            "lineHeight": "1.3",
+                            "fontWeight": "600"
+                        }],
+                        "label-md": ["14px", {
+                            "lineHeight": "1",
+                            "letterSpacing": "0.01em",
+                            "fontWeight": "500"
+                        }],
+                        "headline-lg-mobile": ["24px", {
+                            "lineHeight": "1.2",
+                            "fontWeight": "600"
+                        }],
+                        "headline-lg": ["32px", {
+                            "lineHeight": "1.2",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "600"
+                        }],
+                        "label-sm": ["12px", {
+                            "lineHeight": "1",
+                            "fontWeight": "600"
+                        }]
                     }
                 },
             },
         }
     </script>
-<style>
+    <style>
         .custom-shadow {
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
         }
+
         .drag-over {
             border-style: solid !important;
             border-color: #adc6ff !important;
             background-color: #1c1b1d !important;
         }
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
         body {
             min-height: 100dvh;
         }
+
         .history-list-item:not(:last-child) {
             border-bottom: 1px solid rgba(66, 71, 84, 0.2);
         }
     </style>
 </head>
+
 <body class="bg-background font-body-lg text-on-background min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
-<!-- Main Content -->
-<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile py-xl">
-<div class="w-full max-w-[720px]">
-<!-- Decorative Element -->
-<div class="mb-xl text-center">
-<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-container text-on-primary-container mb-6">
-<span class="material-symbols-outlined" style="font-size: 40px;">cloud_upload</span>
-</div>
-<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-2">Upload File ke tmpfiles.org</h1>
-<p class="text-body-sm text-on-surface-variant">Simple, reliable, and secure file sharing utility.</p>
-</div>
-<!-- Upload Card -->
-<div class="bg-surface-container-low custom-shadow rounded-xl p-lg border border-outline-variant/20 overflow-hidden">
-<!-- Drop Zone -->
-<div class="relative border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-xl p-xl flex flex-col items-center justify-center transition-all duration-200 cursor-pointer group hover:border-primary hover:bg-surface-container" id="dropZone">
-<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="fileInput" type="file"/>
-<div class="text-center pointer-events-none">
-<span class="material-symbols-outlined text-primary text-[56px] mb-4 group-hover:scale-110 transition-transform">upload_file</span>
-<p class="text-label-md font-label-md text-on-surface mb-1">Click to browse or drag and drop</p>
-<p class="text-label-sm font-label-sm text-on-surface-variant">Maximum file size: 5GB</p>
-<div class="mt-4 hidden px-4 py-2 bg-primary-container text-on-primary-container rounded-full text-label-md flex items-center justify-center gap-2" id="selectedFileName">
-<span class="material-symbols-outlined text-[18px]">check_circle</span>
-<span class="truncate max-w-[200px]">File Selected</span>
-</div>
-</div>
-</div>
-<!-- Action Button -->
-<button class="w-full mt-lg bg-primary text-on-primary h-[56px] rounded-lg font-bold text-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/10" id="uploadBtn">
-<span class="material-symbols-outlined">publish</span>
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-margin-mobile py-xl">
+        <div class="w-full max-w-[720px]">
+            <!-- Decorative Element -->
+            <div class="mb-xl text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-container text-on-primary-container mb-6">
+                    <span class="material-symbols-outlined" style="font-size: 40px;">cloud_upload</span>
+                </div>
+                <h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-2">Upload File ke tmpfiles.org</h1>
+                <p class="text-body-sm text-on-surface-variant">Simple, reliable, and secure file sharing utility.</p>
+            </div>
+            <!-- Upload Card -->
+            <div class="bg-surface-container-low custom-shadow rounded-xl p-lg border border-outline-variant/20 overflow-hidden">
+                <!-- Drop Zone -->
+                <div class="relative border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-xl p-xl flex flex-col items-center justify-center transition-all duration-200 cursor-pointer group hover:border-primary hover:bg-surface-container" id="dropZone">
+                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="fileInput" type="file" />
+                    <div class="text-center pointer-events-none">
+                        <span class="material-symbols-outlined text-primary text-[56px] mb-4 group-hover:scale-110 transition-transform">upload_file</span>
+                        <p class="text-label-md font-label-md text-on-surface mb-1">Click to browse or drag and drop</p>
+                        <p class="text-label-sm font-label-sm text-on-surface-variant">Maximum file size: 5GB</p>
+                        <div class="mt-4 hidden px-4 py-2 bg-primary-container text-on-primary-container rounded-full text-label-md flex items-center justify-center gap-2" id="selectedFileName">
+                            <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                            <span class="truncate max-w-[200px]">File Selected</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Action Button -->
+                <button class="w-full mt-lg bg-primary text-on-primary h-[56px] rounded-lg font-bold text-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/10" id="uploadBtn">
+                    <span class="material-symbols-outlined">publish</span>
                     Upload Now
                 </button>
-<!-- Status & Progress -->
-<div class="mt-lg space-y-4 hidden" id="statusContainer">
-<div class="flex flex-col gap-1">
-<div class="flex justify-between items-center mb-1">
-<span class="text-label-sm font-label-sm text-on-surface-variant" id="status">Preparing upload...</span>
-<span class="text-label-sm font-label-sm text-primary" id="progressPercent">0%</span>
-</div>
-<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary transition-all duration-300 w-0" id="progressBar"></div>
-</div>
-</div>
-<div class="hidden" id="resultContainer">
-<div class="p-4 bg-surface-container-high rounded-lg border border-outline-variant/30">
-<p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Direct Link Download:</p>
-<div class="flex gap-2">
-<input class="flex-grow bg-surface-container-lowest border border-outline-variant/50 rounded-md text-body-sm p-2 text-on-surface font-mono overflow-hidden focus:ring-1 focus:ring-primary outline-none" id="result" readonly="" type="text"/>
-<button class="px-4 bg-primary text-on-primary rounded-md hover:bg-primary/90 transition-opacity active:scale-90" id="copyBtn">
-<span class="material-symbols-outlined text-[20px]">content_copy</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Upload History Section -->
-<div class="mt-xl hidden" id="historySection">
-<div class="flex items-center justify-between mb-4">
-<h2 class="text-label-md font-bold text-on-surface uppercase tracking-wider flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px] text-primary">history</span>
+                <!-- Status & Progress -->
+                <div class="mt-lg space-y-4 hidden" id="statusContainer">
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-label-sm font-label-sm text-on-surface-variant" id="status">Preparing upload...</span>
+                            <span class="text-label-sm font-label-sm text-primary" id="progressPercent">0%</span>
+                        </div>
+                        <div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+                            <div class="h-full bg-primary transition-all duration-300 w-0" id="progressBar"></div>
+                        </div>
+                    </div>
+                    <div class="hidden" id="resultContainer">
+                        <div class="p-4 bg-surface-container-high rounded-lg border border-outline-variant/30">
+                            <p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Direct Link Download:</p>
+                            <div class="flex gap-2">
+                                <input class="flex-grow bg-surface-container-lowest border border-outline-variant/50 rounded-md text-body-sm p-2 text-on-surface font-mono overflow-hidden focus:ring-1 focus:ring-primary outline-none" id="result" readonly="" type="text" />
+                                <button class="px-4 bg-primary text-on-primary rounded-md hover:bg-primary/90 transition-opacity active:scale-90" id="copyBtn">
+                                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Upload History Section -->
+            <div class="mt-xl hidden" id="historySection">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-label-md font-bold text-on-surface uppercase tracking-wider flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[20px] text-primary">history</span>
                         Riwayat Upload
                     </h2>
-<button class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" id="clearHistory">Hapus Riwayat</button>
-</div>
-<div class="bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden" id="historyList">
-<!-- History items will be injected here -->
-</div>
-</div>
-<!-- Features Info -->
-<div class="mt-xl grid grid-cols-2 gap-gutter">
-<div class="flex items-start gap-3 p-2">
-<span class="material-symbols-outlined text-primary">timer</span>
-<div>
-<h3 class="text-label-md font-label-md text-on-surface">Auto-Expiring</h3>
-<p class="text-body-sm text-on-surface-variant text-[12px]">Files removed after 60 mins</p>
-</div>
-</div>
-<div class="flex items-start gap-3 p-2">
-<span class="material-symbols-outlined text-primary">lock</span>
-<div>
-<h3 class="text-label-md font-label-md text-on-surface">Encrypted</h3>
-<p class="text-body-sm text-on-surface-variant text-[12px]">Secure server-side processing</p>
-</div>
-</div>
-</div>
-</div>
-</main>
-<script>
+                    <button class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" id="clearHistory">Hapus Riwayat</button>
+                </div>
+                <div class="bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden" id="historyList">
+                    <!-- History items will be injected here -->
+                </div>
+            </div>
+            <!-- Features Info -->
+            <div class="mt-xl grid grid-cols-2 gap-gutter">
+                <div class="flex items-start gap-3 p-2">
+                    <span class="material-symbols-outlined text-primary">timer</span>
+                    <div>
+                        <h3 class="text-label-md font-label-md text-on-surface">Auto-Expiring</h3>
+                        <p class="text-body-sm text-on-surface-variant text-[12px]">Files removed after 60 mins</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-2">
+                    <span class="material-symbols-outlined text-primary">lock</span>
+                    <div>
+                        <h3 class="text-label-md font-label-md text-on-surface">Encrypted</h3>
+                        <p class="text-body-sm text-on-surface-variant text-[12px]">Secure server-side processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
         const fileInput = document.getElementById('fileInput');
         const uploadBtn = document.getElementById('uploadBtn');
         const status = document.getElementById('status');
@@ -264,7 +301,7 @@
             input.select();
             document.execCommand('copy');
             document.body.removeChild(input);
-            
+
             const originalIcon = btn.innerHTML;
             btn.innerHTML = '<span class="material-symbols-outlined text-[20px] text-green-400">check</span>';
             setTimeout(() => btn.innerHTML = originalIcon, 2000);
@@ -323,6 +360,7 @@
 
             const formData = new FormData();
             formData.append('file', file);
+            formData.append('expire', '172800');
 
             try {
                 let progress = 0;
@@ -347,7 +385,7 @@
                     progressPercent.textContent = '100%';
                     status.textContent = 'Upload Berhasil!';
                     status.classList.add('text-green-400');
-                    
+
                     const downloadUrl = data.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
                     result.value = downloadUrl;
                     resultContainer.classList.remove('hidden');
@@ -362,7 +400,7 @@
                     if (uploadHistory.length > 10) uploadHistory.pop(); // Keep last 10
                     localStorage.setItem('upload_history', JSON.stringify(uploadHistory));
                     updateHistoryUI();
-                    
+
                     // Reset selection UI but keep status
                     fileInput.value = '';
                     selectedFileName.classList.add('hidden');
@@ -380,4 +418,6 @@
             }
         });
     </script>
-</body></html>
+</body>
+
+</html>
