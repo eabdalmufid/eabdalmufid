@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>File Upload</title>
+    <!-- Prevent FOUC for theme -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
@@ -139,114 +147,133 @@
         }
     </script>
     <style>
-        .custom-shadow {
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
-
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .drag-over {
-            border-style: solid !important;
             border-color: #adc6ff !important;
-            background-color: #1c1b1d !important;
+            background-color: rgba(173, 198, 255, 0.05) !important;
         }
-
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        body {
-            min-height: 100dvh;
-        }
-
-        .history-list-item:not(:last-child) {
-            border-bottom: 1px solid rgba(66, 71, 84, 0.2);
         }
     </style>
 </head>
 
-<body class="bg-background font-body-lg text-on-background min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+<body class="bg-[#f8fafc] dark:bg-[#09090b] font-body-sm text-slate-800 dark:text-gray-100 min-h-screen flex flex-col selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-primary/30 dark:selection:text-white antialiased transition-colors duration-300">
     <!-- Main Content -->
-    <main class="flex-grow flex flex-col items-center justify-center px-margin-mobile py-xl">
-        <div class="w-full max-w-[720px]">
-            <!-- Decorative Element -->
-            <div class="mb-xl text-center">
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-container text-on-primary-container mb-6">
-                    <span class="material-symbols-outlined" style="font-size: 40px;">cloud_upload</span>
-                </div>
-                <h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-2">Upload File ke tmpfiles.org</h1>
-                <p class="text-body-sm text-on-surface-variant">Simple, reliable, and secure file sharing utility.</p>
-            </div>
-            <!-- Upload Card -->
-            <div class="bg-surface-container-low custom-shadow rounded-xl p-lg border border-outline-variant/20 overflow-hidden">
-                <!-- Drop Zone -->
-                <div class="relative border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-xl p-xl flex flex-col items-center justify-center transition-all duration-200 cursor-pointer group hover:border-primary hover:bg-surface-container" id="dropZone">
-                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="fileInput" type="file" />
-                    <div class="text-center pointer-events-none">
-                        <span class="material-symbols-outlined text-primary text-[56px] mb-4 group-hover:scale-110 transition-transform">upload_file</span>
-                        <p class="text-label-md font-label-md text-on-surface mb-1">Click to browse or drag and drop</p>
-                        <p class="text-label-sm font-label-sm text-on-surface-variant">Maximum file size: 5GB</p>
-                        <div class="mt-4 hidden px-4 py-2 bg-primary-container text-on-primary-container rounded-full text-label-md flex items-center justify-center gap-2" id="selectedFileName">
-                            <span class="material-symbols-outlined text-[18px]">check_circle</span>
-                            <span class="truncate max-w-[200px]">File Selected</span>
-                        </div>
+    <main class="flex-grow flex flex-col items-center justify-center px-5 py-12 w-full">
+        <div class="w-full max-w-sm mx-auto">
+            <!-- Header Section -->
+            <div class="mb-8 flex items-center justify-between animate-[fadeIn_0.4s_ease-out] pl-1">
+                <div class="flex items-center gap-4">
+                    <div class="shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-100 dark:bg-transparent dark:bg-gradient-to-br dark:from-primary/20 dark:to-primary/5 text-blue-600 dark:text-primary ring-1 ring-black/5 dark:ring-white/10 shadow-[0_0_40px_-10px_rgba(173,198,255,0.2)]">
+                        <span class="material-symbols-outlined" style="font-size: 28px;">cloud_upload</span>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">tmpfiles<span class="text-blue-600 dark:text-primary">.org</span></h1>
+                        <p class="text-sm text-slate-500 dark:text-white/50 font-medium mt-0.5">Simple, secure file sharing.</p>
                     </div>
                 </div>
-                <!-- Action Button -->
-                <button class="w-full mt-lg bg-primary text-on-primary h-[56px] rounded-lg font-bold text-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/10" id="uploadBtn">
-                    <span class="material-symbols-outlined">publish</span>
-                    Upload Now
+                <button id="themeToggleBtn" class="w-10 h-10 flex items-center justify-center text-slate-400 dark:text-white/50 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer outline-none">
+                    <span class="material-symbols-outlined text-[24px]" id="themeToggleIcon">dark_mode</span>
                 </button>
-                <!-- Status & Progress -->
-                <div class="mt-lg space-y-4 hidden" id="statusContainer">
-                    <div class="flex flex-col gap-1">
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="text-label-sm font-label-sm text-on-surface-variant" id="status">Preparing upload...</span>
-                            <span class="text-label-sm font-label-sm text-primary" id="progressPercent">0%</span>
+            </div>
+            
+            <!-- Upload Card -->
+            <div class="bg-white dark:bg-white/[0.03] backdrop-blur-2xl rounded-3xl p-5 sm:p-6 border border-slate-200/60 dark:border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] relative overflow-hidden animate-[fadeIn_0.5s_ease-out] transition-colors duration-300">
+                <!-- Drop Zone -->
+                <div class="relative border border-dashed border-slate-300 dark:border-white/[0.15] bg-slate-50/50 dark:bg-black/20 rounded-2xl p-8 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer group hover:border-blue-400 hover:bg-blue-50/50 dark:hover:border-primary/40 dark:hover:bg-white/[0.02]" id="dropZone">
+                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="fileInput" type="file" />
+                    <div class="text-center pointer-events-none transition-transform duration-300 group-hover:-translate-y-1">
+                        <div class="w-12 h-12 mx-auto mb-4 bg-white dark:bg-white/5 shadow-sm dark:shadow-none rounded-full flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-primary/10 transition-colors duration-300">
+                            <span class="material-symbols-outlined text-blue-500 dark:text-primary/80 group-hover:text-blue-600 dark:group-hover:text-primary transition-colors text-[24px]">upload_file</span>
                         </div>
-                        <div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
-                            <div class="h-full bg-primary transition-all duration-300 w-0" id="progressBar"></div>
+                        <p class="text-sm font-medium text-slate-700 dark:text-white mb-1.5">Tap or drag files here</p>
+                        <p class="text-xs text-slate-400 dark:text-white/40">Max 100MB per file</p>
+                        <div class="mt-4 hidden px-4 py-2 bg-blue-50 dark:bg-primary/10 border border-blue-200 dark:border-primary/20 text-blue-600 dark:text-primary rounded-full text-xs flex items-center justify-center gap-2 backdrop-blur-md" id="selectedFileName">
+                            <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                            <span class="truncate max-w-[150px] font-medium">File Selected</span>
                         </div>
                     </div>
-                    <div class="hidden" id="resultContainer">
-                        <div class="p-4 bg-surface-container-high rounded-lg border border-outline-variant/30">
-                            <p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Direct Link Download:</p>
+                </div>
+                
+                <!-- Expiration Selection -->
+                <div class="mt-6">
+                    <label class="text-[11px] font-bold text-slate-400 dark:text-white/40 uppercase tracking-widest block mb-2 ml-1">Durasi Penyimpanan</label>
+                    <div class="relative group">
+                        <select id="expireSelect" class="w-full bg-white dark:bg-black/40 bg-none border border-slate-200/80 dark:border-white/[0.08] rounded-xl text-sm p-3.5 pr-10 text-slate-700 dark:text-white focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none appearance-none cursor-pointer transition-all hover:border-slate-300 dark:hover:border-white/[0.15] shadow-sm dark:shadow-none">
+                            <option value="3600">1 Jam</option>
+                            <option value="21600">6 Jam</option>
+                            <option value="86400">24 Jam</option>
+                            <option value="172800" selected>48 Jam</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400 dark:text-white/40 group-hover:text-slate-600 dark:group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">unfold_more</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Button -->
+                <button class="w-full mt-6 bg-slate-900 text-white dark:bg-white dark:text-black h-12 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-slate-800 dark:hover:bg-gray-200 hover:scale-[1.02] transition-all active:scale-[0.98] shadow-[0_4px_14px_0_rgb(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.1)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100" id="uploadBtn">
+                    Upload Sekarang
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+                
+                <!-- Status & Progress -->
+                <div class="mt-6 space-y-4 hidden" id="statusContainer">
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center px-1">
+                            <span class="text-xs font-medium text-slate-500 dark:text-white/70" id="status">Preparing upload...</span>
+                            <span class="text-xs font-bold text-blue-600 dark:text-primary" id="progressPercent">0%</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-slate-100 dark:bg-black/50 rounded-full overflow-hidden border border-slate-200/50 dark:border-white/5 shadow-inner">
+                            <div class="h-full bg-blue-600 dark:bg-primary transition-all duration-300 w-0 relative overflow-hidden" id="progressBar">
+                                <div class="absolute inset-0 bg-white/20 w-full h-full animate-[shimmer_1s_infinite]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden animate-[fadeIn_0.3s_ease-out]" id="resultContainer">
+                        <div class="p-3 bg-slate-50 dark:bg-primary/5 rounded-xl border border-slate-200/80 dark:border-primary/20">
                             <div class="flex gap-2">
-                                <input class="flex-grow bg-surface-container-lowest border border-outline-variant/50 rounded-md text-body-sm p-2 text-on-surface font-mono overflow-hidden focus:ring-1 focus:ring-primary outline-none" id="result" readonly="" type="text" />
-                                <button class="px-4 bg-primary text-on-primary rounded-md hover:bg-primary/90 transition-opacity active:scale-90" id="copyBtn">
-                                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                <input class="flex-grow bg-transparent text-sm text-slate-700 dark:text-primary font-mono overflow-hidden outline-none px-2" id="result" readonly="" type="text" />
+                                <button class="w-8 h-8 flex items-center justify-center bg-blue-600 dark:bg-primary text-white dark:text-on-primary rounded-lg hover:bg-blue-700 dark:hover:bg-primary/90 transition-all active:scale-90 shadow-sm shrink-0" id="copyBtn">
+                                    <span class="material-symbols-outlined text-[16px]">content_copy</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Upload History Section -->
-            <div class="mt-xl hidden" id="historySection">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-label-md font-bold text-on-surface uppercase tracking-wider flex items-center gap-2">
-                        <span class="material-symbols-outlined text-[20px] text-primary">history</span>
-                        Riwayat Upload
-                    </h2>
-                    <button class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" id="clearHistory">Hapus Riwayat</button>
+            
+            <!-- Features Info (Ultra Minimal) -->
+            <div class="mt-8 flex items-center justify-between px-2 text-[11px] sm:text-xs text-gray-500 dark:text-white/40 animate-[fadeIn_0.6s_ease-out]">
+                <div class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-blue-400 dark:text-primary/50">timer</span>
+                    <span id="expireInfoText">Dihapus otomatis setelah 48 Jam</span>
                 </div>
-                <div class="bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden" id="historyList">
-                    <!-- History items will be injected here -->
+                <div class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-blue-400 dark:text-primary/50">lock</span>
+                    <span>Aman & Terenkripsi</span>
                 </div>
             </div>
-            <!-- Features Info -->
-            <div class="mt-xl grid grid-cols-2 gap-gutter">
-                <div class="flex items-start gap-3 p-2">
-                    <span class="material-symbols-outlined text-primary">timer</span>
-                    <div>
-                        <h3 class="text-label-md font-label-md text-on-surface">Auto-Expiring</h3>
-                        <p class="text-body-sm text-on-surface-variant text-[12px]">Files removed after 48 hours</p>
-                    </div>
+
+            <!-- Upload History Section -->
+            <div class="mt-12 hidden animate-[fadeIn_0.3s_ease-out]" id="historySection">
+                <div class="flex items-center justify-between mb-4 px-1">
+                    <button class="text-[11px] font-bold text-slate-500 dark:text-white/50 uppercase tracking-widest flex items-center gap-1 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer outline-none group" id="toggleHistoryBtn">
+                        Riwayat
+                        <span class="material-symbols-outlined text-[16px] transition-transform duration-300" id="toggleHistoryIcon">expand_more</span>
+                    </button>
+                    <button class="text-xs text-slate-400 dark:text-white/40 hover:text-red-500 dark:hover:text-error transition-colors font-medium" id="clearHistory">Bersihkan</button>
                 </div>
-                <div class="flex items-start gap-3 p-2">
-                    <span class="material-symbols-outlined text-primary">lock</span>
-                    <div>
-                        <h3 class="text-label-md font-label-md text-on-surface">Encrypted</h3>
-                        <p class="text-body-sm text-on-surface-variant text-[12px]">Secure server-side processing</p>
-                    </div>
+                <div class="space-y-2 overflow-hidden transition-all duration-300 hidden" id="historyList">
+                    <!-- History items will be injected here -->
                 </div>
             </div>
         </div>
@@ -266,25 +293,40 @@
         const historySection = document.getElementById('historySection');
         const historyList = document.getElementById('historyList');
         const clearHistoryBtn = document.getElementById('clearHistory');
+        const expireSelect = document.getElementById('expireSelect');
+        const toggleHistoryBtn = document.getElementById('toggleHistoryBtn');
+        const toggleHistoryIcon = document.getElementById('toggleHistoryIcon');
 
         // History Management
         let uploadHistory = JSON.parse(localStorage.getItem('upload_history') || '[]');
+        let isHistoryVisible = false;
+
+        toggleHistoryBtn.addEventListener('click', () => {
+            isHistoryVisible = !isHistoryVisible;
+            if (isHistoryVisible) {
+                historyList.classList.remove('hidden');
+                toggleHistoryIcon.style.transform = 'rotate(180deg)';
+            } else {
+                historyList.classList.add('hidden');
+                toggleHistoryIcon.style.transform = 'rotate(0deg)';
+            }
+        });
 
         function updateHistoryUI() {
             if (uploadHistory.length > 0) {
                 historySection.classList.remove('hidden');
                 historyList.innerHTML = uploadHistory.map((item, index) => `
-                    <div class="history-list-item flex items-center justify-between p-4 bg-surface-container-low hover:bg-surface-container-high transition-colors">
-                        <div class="flex flex-col min-w-0 pr-4">
-                            <span class="text-body-sm font-medium text-on-surface truncate">${item.name}</span>
-                            <span class="text-label-sm text-on-surface-variant">${new Date(item.timestamp).toLocaleTimeString()}</span>
+                    <div class="group flex items-center justify-between p-3.5 bg-white dark:bg-white/[0.02] border border-slate-200/60 dark:border-white/[0.05] shadow-[0_2px_8px_rgb(0,0,0,0.02)] dark:shadow-none rounded-xl hover:bg-slate-50 dark:hover:bg-white/[0.05] hover:border-slate-300 dark:hover:border-white/[0.1] transition-all">
+                        <div class="flex flex-col min-w-0 pr-3">
+                            <span class="text-sm font-medium text-slate-800 dark:text-white truncate">${item.name}</span>
+                            <span class="text-[11px] text-slate-500 dark:text-white/40 mt-1">Exp: ${new Date(item.expiresAt || item.timestamp).toLocaleString('id-ID', {day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'})}</span>
                         </div>
-                        <div class="flex items-center gap-2 shrink-0">
-                            <a href="${item.url}" target="_blank" class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Download">
-                                <span class="material-symbols-outlined text-[20px]">download</span>
+                        <div class="flex items-center gap-1 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <a href="${item.url}" target="_blank" class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 dark:text-white/70 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-white/10 transition-colors" title="Download">
+                                <span class="material-symbols-outlined text-[18px]">download</span>
                             </a>
-                            <button onclick="copyToClipboard('${item.url}', this)" class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Copy Link">
-                                <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                            <button onclick="copyToClipboard('${item.url}', this)" class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 dark:text-white/70 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-white/10 transition-colors" title="Copy Link">
+                                <span class="material-symbols-outlined text-[18px]">content_copy</span>
                             </button>
                         </div>
                     </div>
@@ -323,6 +365,12 @@
         fileInput.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
         fileInput.addEventListener('drop', () => dropZone.classList.remove('drag-over'));
 
+        // Handle expiration duration text update
+        expireSelect.addEventListener('change', (e) => {
+            const selectedText = e.target.options[e.target.selectedIndex].text;
+            document.getElementById('expireInfoText').textContent = `Dihapus otomatis setelah ${selectedText}`;
+        });
+
         // Handle file selection display
         fileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
@@ -349,10 +397,15 @@
                 return;
             }
 
+            if (file.size > 100 * 1024 * 1024) {
+                alert('Ukuran file maksimal adalah 100 MB.');
+                return;
+            }
+
             statusContainer.classList.remove('hidden');
             resultContainer.classList.add('hidden');
             status.textContent = 'Uploading...';
-            status.classList.remove('text-green-400', 'text-error');
+            status.classList.remove('text-green-600', 'dark:text-green-400', 'text-red-600', 'dark:text-error', 'text-error');
             progressBar.style.width = '0%';
             progressPercent.textContent = '0%';
             uploadBtn.disabled = true;
@@ -360,7 +413,7 @@
 
             const formData = new FormData();
             formData.append('file', file);
-            formData.append('expire', '172800');
+            formData.append('expire', expireSelect.value);
 
             try {
                 let progress = 0;
@@ -384,17 +437,19 @@
                     progressBar.style.width = '100%';
                     progressPercent.textContent = '100%';
                     status.textContent = 'Upload Berhasil!';
-                    status.classList.add('text-green-400');
+                    status.classList.add('text-green-600', 'dark:text-green-400');
 
-                    const downloadUrl = data.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+                    const downloadUrl = data.data.url;
                     result.value = downloadUrl;
                     resultContainer.classList.remove('hidden');
 
                     // Add to History
+                    const expireMs = parseInt(expireSelect.value) * 1000;
                     const historyItem = {
                         name: file.name,
                         url: downloadUrl,
-                        timestamp: new Date().getTime()
+                        timestamp: new Date().getTime(),
+                        expiresAt: new Date().getTime() + expireMs
                     };
                     uploadHistory.unshift(historyItem);
                     if (uploadHistory.length > 10) uploadHistory.pop(); // Keep last 10
@@ -406,17 +461,44 @@
                     selectedFileName.classList.add('hidden');
                 } else {
                     status.textContent = 'Upload Gagal: ' + (data.message || 'Error unknown');
-                    status.classList.add('text-error');
+                    status.classList.add('text-red-600', 'dark:text-error');
                 }
             } catch (error) {
                 status.textContent = 'Terjadi kesalahan saat mengunggah.';
-                status.classList.add('text-error');
+                status.classList.add('text-red-600', 'dark:text-error');
                 console.error(error);
             } finally {
                 uploadBtn.disabled = false;
                 uploadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             }
         });
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeToggleIcon = document.getElementById('themeToggleIcon');
+        
+        function updateThemeIcon() {
+            if (document.documentElement.classList.contains('dark')) {
+                themeToggleIcon.textContent = 'light_mode';
+            } else {
+                themeToggleIcon.textContent = 'dark_mode';
+            }
+        }
+        
+        // Initial icon setup
+        if (themeToggleIcon) updateThemeIcon();
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.theme = 'dark';
+                } else {
+                    localStorage.theme = 'light';
+                }
+                updateThemeIcon();
+            });
+        }
     </script>
 </body>
 
